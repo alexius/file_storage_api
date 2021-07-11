@@ -3,6 +3,12 @@
 # Learn more about .gitignore:
 #     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 
+/vendor
+Homestead.json
+Homestead.yaml
+.env
+.phpunit.result.cache
+
 # Node artifact files
 node_modules/
 dist/
