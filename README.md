@@ -39,7 +39,8 @@ It can be extended by adding different file managers classes which work with dif
 5. Set in ".env" file all needed data like credentials for accessing to the DB (Database) and other environment variables.
 6. You should have installed MySQL on server.   
 4. Run `php artisan migrate` to created "files" table in DB.
-5. Configure your WEB server (Apache, Nginx...). The routes to perform API requests are:
+5. Run `php artisan storage:link` and create folder 'files' in '/storage/app/' folder where the files will be stored on server.
+6. Configure your WEB server (Apache, Nginx...). The routes to perform API requests are:
   ```
   # Get file's information. GET Request
   http://your.domain/api/get-file-info/{file_id}
