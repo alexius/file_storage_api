@@ -1,15 +1,17 @@
 {
-    "name": "laravel/lumen",
-    "description": "The Laravel Lumen Framework.",
+    "name": "api/files-storage",
+    "description": "Files Storage API Service.",
     "keywords": ["framework", "laravel", "lumen"],
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "^7.4|^8.0",
+        "intervention/image": "^2.6",
         "laravel/lumen-framework": "^8.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
+        "league/flysystem": "^1.0",
         "mockery/mockery": "^1.3.1",
         "phpunit/phpunit": "^9.3"
     },

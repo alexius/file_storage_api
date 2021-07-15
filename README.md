@@ -22,3 +22,11 @@ If you discover a security vulnerability within Lumen, please send an e-mail to 
 ## License
 
 The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Authors
+[Oleksii Kaharlytskyi]()
+
+## How deploy the project
+1. Checkout project from repository.
+2. Run `composer install` command.
+3. Create ".env" file and put inside it all needed data like 

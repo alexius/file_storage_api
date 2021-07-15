@@ -16,3 +16,13 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'api', 'middleware' => 'tokenAuth'], function () use ($router) {
+    $router->get('get-file-info/{id}',  ['uses' => 'FileStorageController@getFileInfo']);
+
+    $router->get('file/{id}', ['uses' => 'FileStorageController@getFile']);
+
+    $router->post('upload', ['uses' => 'FileStorageController@uploadFile']);
+
+    $router->delete('file/{id}', ['uses' => 'FileStorageController@deleteFile']);
+});
