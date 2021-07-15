@@ -23,10 +23,33 @@ If you discover a security vulnerability within Lumen, please send an e-mail to 
 
 The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
+## Project description
+
+This project should cover possibility to manage files (store, delete etc.) across different storages like local server, Amazon S3, FTP, Google Disc and other.
+It can be extended by adding different file managers classes which work with different storage services. Factory method is being used.
+
 ## Authors
-[Oleksii Kaharlytskyi]()
+[Oleksii Kaharlytskyi](https://bitbucket.org/alexius33/file_storage_api/)
 
 ## How deploy the project
 1. Checkout project from repository.
 2. Run `composer install` command.
-3. Create ".env" file and put inside it all needed data like 
+3. Create ".env" file.
+4. Set in ".env" file your application key to a random string. Typically, this string should be 32 characters long. The key can be set in the .env environment file. Use command `php artisan key:generate` to generate a key.   
+5. Set in ".env" file all needed data like credentials for accessing to the DB (Database) and other environment variables.
+6. You should have installed MySQL on server.   
+4. Run `php artisan migrate` to created "files" table in DB.
+5. Configure your WEB server (Apache, Nginx...). The routes to perform API requests are:
+  ```
+  # Get file's information. GET Request
+  http://your.domain/api/get-file-info/{file_id}
+  
+  # Get file (download). GET Request
+  http://your.domain/api/file/{file_id}
+  
+  # Upload file to the storage. POST Request
+  http://your.domain/api/upload
+  
+  # Upload file to the storage. DELETE Request
+  http://your.domain/api/file{file_id}
+  ```
