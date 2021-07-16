@@ -1,2 +1,1 @@
-RewriteEngine On
-RewriteRule ^$ /public [L]
+RedirectMatch ^/$ /public/
