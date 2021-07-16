@@ -19,7 +19,7 @@ class CreateFilesTable extends Migration
             $table->string('original_name', 50);
             $table->string('system_name', 50);
             $table->string('file_extension', 5);
-            $table->string('file_type', 5);
+            $table->string('file_source', 50);
             $table->bigInteger('file_size');
             $table->string('mime_type', 20);
             $table->string('storage_provider', 100);

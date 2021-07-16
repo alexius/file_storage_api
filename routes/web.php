@@ -18,11 +18,11 @@ $router->get('/', function () use ($router) {
 });
 
 $router->group(['prefix' => 'api', 'middleware' => 'tokenAuth'], function () use ($router) {
-    $router->get('get-file-info/{id}',  ['uses' => 'FileStorageController@getFileInfo']);
+    $router->get('get-file-info/{systemFileName}',  ['uses' => 'FileStorageController@getFileInfo']);
 
-    $router->get('file/{id}', ['uses' => 'FileStorageController@getFile']);
+    $router->get('file/{systemFileName}', ['uses' => 'FileStorageController@getFile']);
 
     $router->post('upload', ['uses' => 'FileStorageController@uploadFile']);
 
-    $router->delete('file/{id}', ['uses' => 'FileStorageController@deleteFile']);
+    $router->delete('file/{systemFileName}', ['uses' => 'FileStorageController@deleteFile']);
 });

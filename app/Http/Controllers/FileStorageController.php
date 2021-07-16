@@ -13,7 +13,6 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 /**
  * Class FileStorageController
  * Realization of API for manage the files.
- *
  * @package App\Http\Controllers
  */
 class FileStorageController extends Controller
@@ -38,13 +37,14 @@ class FileStorageController extends Controller
     /**
      * Get file's information.
      *
-     * @param $id
+     * @param $systemFileName
      * @return JsonResponse
      */
-    public function getFileInfo($id): JsonResponse
+    public function getFileInfo($systemFileName): JsonResponse
     {
+        //\request()->file('file')->getFileInfo()
         $fileManager = $this->fileManagerFactory->determineFactory();
-        $fileData = $fileManager->getFileInfo($id);
+        $fileData = $fileManager->getFileInfo($systemFileName);
 
         return response()->json($fileData);
     }
@@ -52,14 +52,14 @@ class FileStorageController extends Controller
     /**
      * Get file.
      *
-     * @param $id
+     * @param $systemFileName
      * @return StreamedResponse | array
      */
-    public function getFile($id)
+    public function getFile($systemFileName)
     {
         $fileManager = $this->fileManagerFactory->determineFactory();
 
-        return $fileManager->getFile($id);
+        return $fileManager->getFile($systemFileName);
     }
 
     /**
@@ -84,13 +84,13 @@ class FileStorageController extends Controller
     /**
      * Delete the file.
      *
-     * @param $id
+     * @param $systemFileName
      * @return JsonResponse
      */
-    public function deleteFile($id): JsonResponse
+    public function deleteFile($systemFileName): JsonResponse
     {
         $fileManager = $this->fileManagerFactory->determineFactory();
-        $result = $fileManager->deleteFile($id);
+        $result = $fileManager->deleteFile($systemFileName);
 
         return response()->json($result);
     }
