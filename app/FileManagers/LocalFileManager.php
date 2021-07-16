@@ -27,7 +27,11 @@ class LocalFileManager implements FileManagerContract
      */
     public function getFileInfo($systemFileName): array
     {
-        return File::where('system_name', $systemFileName)->firstOrFail()->toArray();
+        try {
+            return File::where('system_name', $systemFileName)->firstOrFail()->toArray();
+        } catch  (ModelNotFoundException $exception) {
+            return ['error' => 'File not found.', 'status' => 400];
+        }
     }
 
     /**
