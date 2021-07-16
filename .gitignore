@@ -56,5 +56,5 @@ Thumbs.db
 
 storage/
 
-#database/database.sqlite
+database/database.sqlite
 

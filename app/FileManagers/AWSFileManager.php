@@ -24,7 +24,7 @@ class AWSFileManager implements \App\Contracts\FileManagerContract
         // TODO: Implement getFile() method.
     }
 
-    public function uploadFile($data): string
+    public function uploadFile($data): array
     {
         // TODO: Implement uploadFile() method.
     }

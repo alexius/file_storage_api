@@ -20,7 +20,7 @@ interface FileManagerContract
     public function getFile($systemFileName);
 
     // Upload file to the storage.
-    public function uploadFile($data): string;
+    public function uploadFile($data): array;
 
     // Delete file.
     public function deleteFile($systemFileName): array;
