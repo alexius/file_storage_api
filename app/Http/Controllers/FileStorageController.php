@@ -42,7 +42,6 @@ class FileStorageController extends Controller
      */
     public function getFileInfo($systemFileName): JsonResponse
     {
-        //\request()->file('file')->getFileInfo()
         $fileManager = $this->fileManagerFactory->determineFactory();
         $fileData = $fileManager->getFileInfo($systemFileName);
 
@@ -71,12 +70,23 @@ class FileStorageController extends Controller
      */
     public function uploadFile(Request $request): JsonResponse
     {
-        $this->validate($request, [
-            'file' => 'required|file|mimes:jpeg,jpg,JPG,png,gif,tif,tiff,cgm,bmp,svg,webp,mp4,mpeg,3gp,3g2,webm,weba,ts,ogv,avi'
-        ]);
+        try {
+            $this->validate($request, [
+                'file' =>
+                    'required|file|mimes:pdf,doc,docx,xlsx,xls,xml,odt,odt,ods,jpeg,jpg,JPG,png,gif,tif,tiff,cgm,bmp,svg,webp,mp4,mpeg,3gp,3g2,webm,weba,ts,ogv,avi'
+            ]);
 
-        $fileManager = $this->fileManagerFactory->determineFactory();
-        $data = $fileManager->uploadFile($request);
+            $fileManager = $this->fileManagerFactory->determineFactory();
+            $data = $fileManager->uploadFile($request);
+        } catch (\Exception $exception) {
+            $data = [
+                'error' => [
+                    'message' => $exception->response->original['file'],
+                    'code' => $exception->status
+                ],
+                'status' => false
+            ];
+        }
 
         return response()->json($data, 201);
     }

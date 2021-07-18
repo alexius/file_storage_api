@@ -89,6 +89,19 @@ class LocalFileManager implements FileManagerContract
             $mimeType = $img->mime();
             $fileSize = $img->filesize();*/
 
+            $userId = $data->get('user_id');
+            $fileSource = $data->get('file_source');
+
+            if (empty($userId) || empty($fileSource)) {
+                return [
+                    'error' => [
+                        'message' => 'Required parameters are absent (user_id or file_source)',
+                        'code' => 201
+                    ],
+                    'status' => false
+                ];
+            }
+
             $file = $data->file('file');
 
             // Store file on server and take generated name of file on server which will be used like ID for file.
@@ -98,11 +111,11 @@ class LocalFileManager implements FileManagerContract
 
             // Prepare data of file.
             $storedFileInfo = [
-                'user_id' => $data->get('user_id'), // What user send the file in particular application.
+                'user_id' => $userId, // What user send the file in particular application.
                 'original_name' => $file->getClientOriginalName(),
                 'system_name' => $system_name, // Save unique file name given by system.
                 'file_extension' => $file->extension(),
-                'file_source' => $data->get('file_source'), // From where file has come, what particular application.
+                'file_source' => $fileSource, // From where file has come, what particular application.
                 'file_size' => $file->getSize(),
                 'mime_type' => $file->getMimeType(),
                 'storage_provider' => __CLASS__, // Save information about the manager who processed the file.
