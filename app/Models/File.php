@@ -34,7 +34,6 @@ class File extends Model
         'system_name',
         'file_extension',
         'file_source',
-        'file_type',
         'file_size',
         'mime_type',
         'storage_provider',

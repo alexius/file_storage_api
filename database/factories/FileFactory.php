@@ -22,13 +22,11 @@ class FileFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
-            'email' => $this->faker->unique()->safeEmail,
             'user_id' => $this->faker->uuid(),
-            'original_name' => $this->faker->file,
-            'system_name' => $this->faker->uuid(),
+            'original_name' => $this->faker->regexify('[A-Za-z0-9]{20}'),
+            'system_name' => $this->faker->sha1(),
             'file_extension' => $this->faker->fileExtension(),
-            'file_type' => $this->faker->mimeType(),
+            'file_source' => $this->faker->name,
             'file_size' => $this->faker->randomNumber(),
             'mime_type' => $this->faker->mimeType(),
             'storage_provider' => 'local',
